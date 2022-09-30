@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row" id="section_gallery">
+            {% for p in imgs %}
+            
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div id="card_gallery" class="card">
+                            <label type="button" class="label" data-bs-toggle="modal" data-bs-target="#modalId{{p.id}}">
+                                <img class="card-img-top" src="{{ p.image.url }}" alt="imagen galeria">
+                                
+                            </label>
+                        </div>
+                        <div class="modal fade" id="modalId{{p.id}}" tabindex="-1" role="dialog" 
+                        aria-labelledby="modalTitleId" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+                                <img class="img-fluid rounded" src="{{ p.image.url }}" alt="imagen galeria">
+                            </div>
+                        </div>
+                    </div>
+
+            {% endfor %}
+            
+    </div>
+</div>
+
+{% endblock %}

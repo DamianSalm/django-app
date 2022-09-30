@@ -1,0 +1,48 @@
+Pregunta 1
+Las gráficas son una herramienta:
+
+Seleccione una:
+a. Decorativa para hacer más atractivos los informes
+b. Una importante herramienta de visualización e interpretación
+
+Pregunta 2
+Para controlar el contenido de una celda según el resultado de una expresión lógica utilizamos:
+
+Seleccione una:
+a. Formatos condicionales
+b. Funciones condicionales
+c. Las dos opciones son correctas
+d. Ninguna opción es correcta
+
+Pregunta 3
+Para extraer un valor de una tabla dinámica utilizo:
+
+Seleccione una:
+a. EXTRAE
+b. BDEXTRAER
+c. ELEGIR
+d. GETPIVOTDATA
+
+Pregunta 4
+Para controlar el formato de una celda según el resultado de una expresión lógica utilizamos:
+
+Seleccione una:
+a. Formatos condicionales
+b. Funciones condicionales
+c. Las dos opciones son correctas
+d. Ninguna opción es correcta
+
+Pregunta 5
+Goal seek es una herramienta que permite:
+
+Seleccione una:
+a. Calcular un valor desconocido de una celda a partir de una fórmula y variables
+b. Encontrar una fórmula a partir de una o más variables conocidas y una desconocida
+c. Alcanzar un objetivo
+
+Pregunta 6
+Las gráficas:
+
+Seleccione una:
+a. Pueden crearse de tal forma que modifiquen su aspecto según los datos
+b. Quedan fijas una vez creadas

@@ -1,0 +1,98 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="container" id="first_section">
+  <div class="row">
+    <div class="col-md-9">
+      <ul class="">
+        <li class="list-group-item">Ubicación<span>Ubicado en Bº Belgrano, cerca del centro y otros lugares de interés.</span></li>
+        <li class="list-group-item">Comodidad<span>Amoblado, equipado, y a estrenar! Posée horno, termotanque, calefactor y cisterna. También cuenta con entrada independiente.</span></li>
+        <li class="list-group-item">Descanso<span>Debajo habita una familia, delante vive una estudiante, y el barrio es muy tranquilo durante las noches. Ideal para descansar.</span></li>
+      </ul>
+        
+        
+
+    </div>
+    <div class="col-md-9">
+      <div class="card" id="card_first_section">
+        {% for p in imgs %}
+        <img src="{{ image.url }}" class="card-img-top" alt="">
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block content2 %}
+{% load static %}
+
+    
+
+<div class="container">
+  <div class="row" id="section_gallery">
+       {% for p in imgs %}
+
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+      <div id="card_gallery" class="card">
+        <label type="button" class="label" data-bs-toggle="modal" data-bs-target="#modalId{{p.id}}">
+          <img class="card-img-top" src="{{ p.image.url }}" alt="imagen galeria">
+
+        </label>
+      </div>
+      <div class="modal fade" id="modalId{{p.id}}" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+          <img class="img-fluid rounded" src="{{ p.image.url }}" alt="imagen galeria">
+        </div>
+      </div>
+    </div>
+
+       {% endfor %}
+
+  </div>
+</div>
+<br>
+<!-- ROW map and contact -->
+<div class="container">
+  <div id="maprow" class="row">
+    <!-- MAP (maps) -->
+    <div id="maps" class="col-sm-12">
+      <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1on_rRXG5QR9tsJ21N0m128x8eo7_J-M&ehbc=2E312F"
+        width="100%" height="480"></iframe>
+    </div>
+  </div>
+</div><br>
+<!-- CONTACTO (contact) -->
+
+{% endblock %}
+
+{% block footer %}
+{% load static %}
+
+
+<!-- FOOTER -->
+<div class="container">
+<div class="row">
+  <div class="col-md-12">
+  <form action="" method="'post">
+    <div class="card d-flex">
+      {% load crispy_forms_tags %}
+      {% csrf_token %}
+      {{ form | crispy }}
+      <br>
+      <button type="submit" name="action" value="enviar" class="btn btn-primary">Enviar</button>
+      <div class="mb-3">
+      {{mensaje}}
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+</div>
+{% endblock %}
