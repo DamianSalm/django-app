@@ -1,98 +1,90 @@
+<!-- HOME -->
 {% extends 'main/base.html' %}
 
 {% block content %}
+<!-- INFO -->
 {% load static %}
 
 <div class="container" id="first_section">
   <div class="row">
-    <div class="col-md-9">
-      <ul class="">
-        <li class="list-group-item">Ubicación<span>Ubicado en Bº Belgrano, cerca del centro y otros lugares de interés.</span></li>
-        <li class="list-group-item">Comodidad<span>Amoblado, equipado, y a estrenar! Posée horno, termotanque, calefactor y cisterna. También cuenta con entrada independiente.</span></li>
-        <li class="list-group-item">Descanso<span>Debajo habita una familia, delante vive una estudiante, y el barrio es muy tranquilo durante las noches. Ideal para descansar.</span></li>
-      </ul>
-        
-        
-
-    </div>
-    <div class="col-md-9">
-      <div class="card" id="card_first_section">
-        {% for p in imgs %}
-        <img src="{{ image.url }}" class="card-img-top" alt="">
-        {% endfor %}
-
+    <!-- top text carousel -->
+    <div id="features" class="col-12">
+      <div id="carousel_features" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+           {% for object in obj %}
+          <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+            <h1 class="animate__animated animate__zoomIn">
+            {{object.titulo}}</h1>
+            <h3 class="animate__animated animate__slideInDown">{{object.subtitulo}}</h3>
+          </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel_features" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel_features" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
-  </div>
-</div>
+  </div><br>
 
-
-{% endblock %}
-
-{% block content2 %}
-{% load static %}
-
-    
-
-<div class="container">
-  <div class="row" id="section_gallery">
-       {% for p in imgs %}
-
-    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-      <div id="card_gallery" class="card">
-        <label type="button" class="label" data-bs-toggle="modal" data-bs-target="#modalId{{p.id}}">
-          <img class="card-img-top" src="{{ p.image.url }}" alt="imagen galeria">
-
-        </label>
-      </div>
-      <div class="modal fade" id="modalId{{p.id}}" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
-          <img class="img-fluid rounded" src="{{ p.image.url }}" alt="imagen galeria">
+  <div class="row justify-content-center align-items-top g-2"> <!-- row div into two cols -->
+    <div id="images" class="col-md-6 col-sm-12">
+      <!-- image carousel -->
+      <br>
+      <div id="carousel_img" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          {% for object in obj %}
+          <button type="button" data-bs-target="#carousel_img" data-bs-slide-to="{{forloop.counter0}}" {% if forloop.counter0 == 0 %} class="active"{% endif %}>
+          {% endfor %}
+        </div>
+        <div class="carousel-inner">
+           {% for object in obj %}
+          <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+            <img src="{{object.imagen.url}}" class="img-fluid d-block w-100">
+          </div>
+            {% endfor %}
         </div>
       </div>
     </div>
-
-       {% endfor %}
-
-  </div>
-</div>
-<br>
-<!-- ROW map and contact -->
-<div class="container">
-  <div id="maprow" class="row">
-    <!-- MAP (maps) -->
-    <div id="maps" class="col-sm-12">
-      <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1on_rRXG5QR9tsJ21N0m128x8eo7_J-M&ehbc=2E312F"
-        width="100%" height="480"></iframe>
+    <div id="contact_div" class="col-md-6">
+      <div class="d-flex justify-content-center">
+        <hr>
+        <div><span>{{mensaje}}</span></div>
+        &nbsp;
+        <h2>Contacto</h2>
+        <hr>
+      </div>
+      <form action="" method="POST" name="contact_card">
+        <div class="card "><br>
+          {% load crispy_forms_tags %}
+          {% csrf_token %}
+          {{ form | crispy }}
+          <hr>
+          <div class="d-flex justify-content-center">
+          <!--  <button type="reset" name="action" value="cancelar" class="btn btn-secondary">Cancelar</button>  -->
+          &nbsp;
+          <button type="submit" name="action" value="enviar" class="btn btn-primary">Enviar</button>
+          </div><br>
+        </div>
+      </form>
+      <br><br>
     </div>
   </div>
-</div><br>
-<!-- CONTACTO (contact) -->
+</div>
+
+
 
 {% endblock %}
 
 {% block footer %}
+<!-- CONTACT -->
 {% load static %}
 
 
-<!-- FOOTER -->
-<div class="container">
-<div class="row">
-  <div class="col-md-12">
-  <form action="" method="'post">
-    <div class="card d-flex">
-      {% load crispy_forms_tags %}
-      {% csrf_token %}
-      {{ form | crispy }}
-      <br>
-      <button type="submit" name="action" value="enviar" class="btn btn-primary">Enviar</button>
-      <div class="mb-3">
-      {{mensaje}}
-      </div>
-    </div>
-  </form>
-</div>
-</div>
-</div>
+
+
+
+
 {% endblock %}

@@ -4,10 +4,10 @@
 <br>
 <div class="container" id="contacto">
   <div class="row">
-    <div class="col-12 col-md-6 offset-md-3" id="contact">
+    <div id="contact_div" class="col-12 col-md-6 offset-md-3">
       <h2>Contacto</h2>
       <hr>
-      <form action="" method="POST" name="contactcard">
+      <form action="" method="POST" name="contact_card">
         <div class="card ">
           {% load crispy_forms_tags %}
           {% csrf_token %}
@@ -15,10 +15,10 @@
           <hr>
           <div class="d-flex justify-content-center">
           <span>{{mensaje}}</span>
-          <button type="reset" name="action" value="cancelar" class="btn btn-secondary">Cancelar</button>
+          <!--  <button type="reset" name="action" value="cancelar" class="btn btn-secondary">Cancelar</button>  -->
           &nbsp;
           <button type="submit" name="action" value="enviar" class="btn btn-primary">Enviar</button>
-          </div>
+          </div><br>
         </div>
       </form>
     </div>
